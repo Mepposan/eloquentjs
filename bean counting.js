@@ -1,6 +1,6 @@
 function countBs(string){
-var position = 0
-var result = 0
+var position = 0;
+var result = 0;
 while (position < string.length) {
   if (string.charAt(position) == "B") {
     result = result + 1; 
@@ -9,12 +9,12 @@ while (position < string.length) {
   else
     position = position + 1;
 }
-return result
+return result;
 }
 
 function countChar(string, B){
-var position = 0
-var result = 0
+var position = 0;
+var result = 0;
 while (position < string.length) {
   if (string.charAt(position) == B) {
     result = result + 1; 
@@ -23,7 +23,7 @@ while (position < string.length) {
   else
     position = position + 1;
 }
-return result
+return result;
 }
 
 console.log(countBs("BBC"));

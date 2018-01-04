@@ -11,12 +11,12 @@ console.log(arrayToList([10, 20]));
 
 function listToArray(list) {
   var array = [];
-  var x = 1
+  var x = 1;
   for (i = 0; i < x; i++) {
       if (list.rest != null) {
       	array.push(list.value);
       	list = list.rest;
-      	x++
+      	x++;
       	}
       else
       	array.push(list.value);
@@ -29,16 +29,16 @@ return array;
 
 function prepend(value, rest) {
 var list = {value: value,
-	    	rest: rest,}
-return list
+	    	rest: rest};
+return list;
 }
 
   console.log(prepend(10, prepend(20, null)));
   // → {value: 10, rest: {value: 20, rest: null}}
 
 function nth(list, index) {
-var n = 0
-var x = 1
+var n = 0;
+var x = 1;
   for (i = 0; i < x; i++) {
     if (x == index + 1)  	
     	n = list.value;

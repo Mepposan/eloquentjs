@@ -1,54 +1,38 @@
-// Your code here.
 function arrayToList(array) {
-  var list = null;
-  for (i = array.length -1; i > -1; i--) 
-    list = {value: array[i], rest: list};
-  return list;
-}
-
-console.log(arrayToList([10, 20]));
-  // → {value: 10, rest: {value: 20, rest: null}}
-
-function listToArray(list) {
-  var array = [];
-  var x = 1;
-  for (i = 0; i < x; i++) {
-      if (list.rest != null) {
-      	array.push(list.value);
-      	list = list.rest;
-      	x++;
-      	}
-      else
-      	array.push(list.value);
-     }
-return array;
-}
-  
-  console.log(listToArray(arrayToList([10, 20, 30, 40, 50, 60])));
-  // → [10, 20, 30]
-
-function prepend(value, rest) {
-var list = {value: value,
-	    	rest: rest};
-return list;
-}
-
-  console.log(prepend(10, prepend(20, null)));
-  // → {value: 10, rest: {value: 20, rest: null}}
-
-function nth(list, index) {
-var n = 0;
-var x = 1;
-  for (i = 0; i < x; i++) {
-    if (x == index + 1)  	
-    	n = list.value;
-    else {
-      list = list.rest;
-      x++;
-    }
+  var obj = null
+  for (i = array.length - 1; i >= 0; i--) {
+    obj = {value: array[i], rest: obj}
   }
-return n;
+  return obj;
 }
 
-console.log(nth(arrayToList([10, 20, 30]), 1));
-  // → 20
+function listToArray(obj) {
+  var arr = [];
+  for (i = 0; obj != null; i++) {
+    arr.push(obj.value);
+    obj = obj.rest;
+  }
+  return arr;
+}
+
+function prepend(element, list) {
+  var ob = {};
+  ob.value = element;
+  ob.rest = list;
+  return ob;
+}
+
+function nth(list, number) {
+  if (list == null) return undefined;
+  if (number > 0) return nth(list.rest, number -1)
+  else return list.value
+}
+console.log(nth({value: 10, rest: {rest: {value: 30, rest: null}}}, 0))
+console.log(arrayToList([10, 20, 30]));
+// → {value: 10, rest: {value: 20, rest: null}}
+console.log(listToArray(arrayToList([10, 20, 30, 40])));
+// → [10, 20, 30]
+console.log(prepend(10, prepend(20, null)));
+// → {value: 10, rest: {value: 20, rest: null}}
+console.log(nth(arrayToList([10, 20, 30]), 3));
+// → 20
